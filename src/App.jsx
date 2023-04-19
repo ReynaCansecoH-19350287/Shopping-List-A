@@ -1,28 +1,38 @@
 import { useState } from "react"
 
 function App() {
-  const [itemChecked, setItemChecked] = useState({
-    first: false,
-    second: false,
-    third: false,
-  })
+  const [listItems, setListItems] = useState([
+    {
+      id: "",
+      name: "",
+      quantity: 0,
+      unit: "",
+      checked: false,
+    },
+    {
+      id: "",
+      name: "",
+      quantity: 0,
+      unit: "",
+      checked: false,
+    },
+    {
+      id: "",
+      name: "",
+      quantity: 0,
+      unit: "",
+      checked: false,
+    },
+  ])
 
   const handleItemChecked = (e) => {
-    /*if (itemChecked[e.target.name]) {
-      setItemChecked({
-        ...itemChecked,
-        [e.target.name]: false,
-      });
-    } else {
-      setItemChecked({
-        ...itemChecked,
-        [e.target.name]: true,
-      });
-    }*/
-    setItemChecked({
-      ...itemChecked,
-      [e.target.name]: !itemChecked[e.target.name]
+    const newList = listItems.map(item => {
+      if (e.target.name === item.id) {
+        item.checked = !item.checked;
+      }
+      return item;
     })
+    setListItems(newList);   
   }
 
   return (
@@ -41,8 +51,8 @@ function App() {
       <div className="row">
         <div className="col">
           <input
-          checked={itemChecked.first}
-          name="first"
+          checked={listItems[0].checked}
+          name={listItems[0].id}
           onClick={(e) => handleItemChecked(e)}
           type="checkbox" 
           />
@@ -55,13 +65,16 @@ function App() {
             //itemChecked.first && "1 Kg"
           }
           {
-            itemChecked.first ? <del>1 Kg</del>: "1 Kg"
+            listItems[0].checked ? 
+            <del>{`${listItems[0].quantity} ${listItems[0].unit}`}</del> :
+            `${listItems[0].quantity} ${listItems[0].unit}`
           }
           </div>
         <div 
         className="col-5 col-md-6 text-start" 
-        style={{textDecoration: itemChecked.first && "Line-through"}}>
-          Tortillas
+        style={{textDecoration: listItems.first && "Line-through"}}
+        >
+          {listItems[0].name}
           </div>
         <div className="col-4 col-md-3 btn-group btn-group-sm" role="group">
           <button type="button" className="btn btn-outline-primary">
@@ -77,12 +90,34 @@ function App() {
       </div>
       <div className="row">
         <div className="col">
-          <input type="checkbox" />
+          <input
+          checked={listItems[0].checked}
+          name={listItems[0].id}
+          onClick={(e) => handleItemChecked(e)}
+          type="checkbox" 
+          />
         </div>
-        <div className="col-2 text-start">1 Lt</div>
-        <div className="col-5 col-md-6 text-start">Aceite</div>
+        <div className="col-2 text-start">
+          {
+            //itemChecked.first && <del>1 Kg</del>
+          }
+          {
+            //itemChecked.first && "1 Kg"
+          }
+          {
+            listItems[0].checked ? 
+            <del>{`${listItems[0].quantity} ${listItems[0].unit}`}</del> :
+            `${listItems[0].quantity} ${listItems[0].unit}`
+          }
+          </div>
+        <div 
+        className="col-5 col-md-6 text-start" 
+        style={{textDecoration: listItems.first && "Line-through"}}
+        >
+          {listItems[0].name}
+          </div>
         <div className="col-4 col-md-3 btn-group btn-group-sm" role="group">
-        <button type="button" className="btn btn-outline-primary">
+          <button type="button" className="btn btn-outline-primary">
             <i className="bi bi-pencil-square"></i>
           </button>
           <button type="button" className="btn btn-outline-primary">
@@ -95,12 +130,34 @@ function App() {
       </div>
       <div className="row">
         <div className="col">
-          <input type="checkbox" />
+          <input
+          checked={listItems[0].checked}
+          name={listItems[0].id}
+          onClick={(e) => handleItemChecked(e)}
+          type="checkbox" 
+          />
         </div>
-        <div className="col-2 text-start">3 Lts</div>
-        <div className="col-5 col-md-6 text-start">Refresco de Coca-Cola</div>
+        <div className="col-2 text-start">
+          {
+            //itemChecked.first && <del>1 Kg</del>
+          }
+          {
+            //itemChecked.first && "1 Kg"
+          }
+          {
+            listItems[0].checked ? 
+            <del>{`${listItems[0].quantity} ${listItems[0].unit}`}</del> :
+            `${listItems[0].quantity} ${listItems[0].unit}`
+          }
+          </div>
+        <div 
+        className="col-5 col-md-6 text-start" 
+        style={{textDecoration: listItems.first && "Line-through"}}
+        >
+          {listItems[0].name}
+          </div>
         <div className="col-4 col-md-3 btn-group btn-group-sm" role="group">
-        <button type="button" className="btn btn-outline-primary">
+          <button type="button" className="btn btn-outline-primary">
             <i className="bi bi-pencil-square"></i>
           </button>
           <button type="button" className="btn btn-outline-primary">
