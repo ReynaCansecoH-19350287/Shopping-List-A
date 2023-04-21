@@ -1,5 +1,6 @@
 import { useState } from "react"
 import ListItem from "./components/ListItem";
+import NewItemButton from "./components/NewItemButton";
 
 function App() {
   const [listItems, setListItems] = useState([
@@ -26,7 +27,7 @@ function App() {
     },
     {
       id: "4",
-      name: "Papel Higenico",
+      name: "Papel Higienico",
       quantity: 1,
       unit:"Pz",
       checked: false,
@@ -49,10 +50,8 @@ function App() {
         <div className="col text-start">
           <h1>Shopping List</h1>
         </div>
-        <div className="col text-end">
-          <button type="button" className="btn btn-outline-primary">
-            <i className="bi bi-plus-circle"></i>
-          </button>
+        <div className="col text-end mt-2">
+          <NewItemButton />
         </div>
       </div>
       <hr />
@@ -69,6 +68,11 @@ function App() {
         ))
       }
       <hr />
+      <div className= "row">
+      <div className= "col text-end ">
+        <NewItemButton/>
+      </div>
+      </div>
     </div>
   )
 }
