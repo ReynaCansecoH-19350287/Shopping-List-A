@@ -1,6 +1,7 @@
 import { useState } from "react"
 import ListItem from "./components/ListItem";
 import NewItemButton from "./components/NewItemButton";
+import ClearListButton from "./components/ClearListButton";
 
 function App() {
   const [listItems, setListItems] = useState([
@@ -51,6 +52,7 @@ function App() {
           <h1>Shopping List</h1>
         </div>
         <div className="col text-end mt-2">
+          <ClearListButton setListItems={setListItems}/>
           <NewItemButton 
           listItems={listItems}
           setListItems={setListItems} 
@@ -73,6 +75,7 @@ function App() {
       <hr />
       <div className= "row">
       <div className= "col text-end ">
+        <ClearListButton setListItems={setListItems}/>
         <NewItemButton 
         listItems={listItems}
         setListItems={setListItems} 
