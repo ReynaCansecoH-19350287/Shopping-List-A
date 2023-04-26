@@ -41,14 +41,15 @@ const NewItemButton = ({listItems, setListItems}) => {
           return {name, quantity, unit};
         }
       })
+      if (!value.name || !value.quantity || !value.unit) return;
       setListItems([
         ...listItems,
         {
-          id: listItems.length + 1,
+          id: `${listItems.length + 1}`,
           ...value,
           checked: false,
         }
-      ])     
+      ]);     
     }
 
   return (
