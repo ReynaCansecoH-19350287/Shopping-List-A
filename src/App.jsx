@@ -4,36 +4,9 @@ import NewItemButton from "./components/NewItemButton";
 import ClearListButton from "./components/ClearListButton";
 
 function App() {
-  const [listItems, setListItems] = useState([
-    {
-      id: "1",
-      name: "Arroz",
-      quantity: 1,
-      unit:"Kg",
-      checked: false,
-    },
-    {
-      id: "2",
-      name: "Frijol",
-      quantity: 1,
-      unit:"Kg",
-      checked: false,
-    },
-    {
-      id: "3",
-      name: "Leche",
-      quantity: 2,
-      unit:"Lts",
-      checked: false,
-    },
-    {
-      id: "4",
-      name: "Papel Higienico",
-      quantity: 1,
-      unit:"Pz",
-      checked: false,
-    },
-  ])
+  const [listItems, setListItems] = useState(
+    JSON.parse(localStorage.getItem("listItems")) || []
+    );
 
   const handleItemChecked = (e) => {
     const newList = listItems.map(item => {
@@ -42,6 +15,7 @@ function App() {
       }
       return item;
     })
+    localStorage.setItem("listItems", JSON.stringify(newList));
     setListItems(newList);
   }
 
