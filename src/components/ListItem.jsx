@@ -1,4 +1,5 @@
 import Swal from "sweetalert2";
+import {v4 as uuidv4} from "uuid"
 const ListItem = ({
     item,
     handleItemChecked,
@@ -8,15 +9,18 @@ const ListItem = ({
       const {id, name, quantity, unit, checked} = item;
       const deleteListItem = () => {
           const newList = listItems.filter(item => item.id !== id);
+          localStorage.setItem("listItems", JSON.stringify(newList));
           setListItems(newList);
       }
       const cloneListItem = () => {
         const newList = [
           ...listItems,
-          {...item,
-          id: (listItems.length + 1).toString(),
+          {
+            ...item,
+          id: uuidv4(),
         } 
         ];
+        localStorage.setItem("listItems", JSON.stringify([]));
         setListItems(newList);
       }
       const editListItems = async () => {
@@ -72,6 +76,7 @@ const ListItem = ({
           }
           return item;
         })
+        localStorage.setItem("listItems", JSON.stringify(newList));
         setListItems(newList);
     }
     return (
