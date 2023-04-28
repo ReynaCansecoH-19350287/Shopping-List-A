@@ -10,6 +10,7 @@ const ClearListButton = ({setListItems}) => {
             confirmButtonText: "Yes, clear it!"   
         })
         if (isConfirmed) {
+            localStorage.setItem("listItems", JSON.stringify([]));
             setListItems([])
         }
     }
